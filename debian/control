@@ -1,0 +1,32 @@
+Source: cyber-rfc3339-logs
+Section: admin
+Priority: optional
+Maintainer: Trent W. Buck <twb@cyber.com.au>
+Uploaders: Trent W. Buck <trentbuck@gmail.com>
+Build-Depends:
+ debhelper-compat (= 13),
+Standards-Version: 4.3.0
+Rules-Requires-Root: no
+VCS-Git: https://github.com/cyberitsolutions/cyber-rfc3339-logs
+
+Package: cyber-rfc3339-logs
+Architecture: all
+Depends:
+ ${misc:Depends},
+ logcheck-database,
+Recommends:
+ rsyslog,
+ rsyslog-relp,
+ logcheck,
+ logrotate,
+Enhances:
+ logcheck,
+ logrotate,
+ rsyslog,
+Description: use rfc3339 timestamps for rsyslog and logcheck
+ This is a Debian package because it has to patch /etc/logcheck/ignore.d.server/*.
+ To do that automatically on package installation, it has to be a package so it will
+ fire appropriate hooks.
+ .
+ If this was just in ansible, it would be very easy to forget to do this.
+ Also, in PrisonPC, this was already coded, so I can just copy-paste it here.
